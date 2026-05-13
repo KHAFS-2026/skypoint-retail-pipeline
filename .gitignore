@@ -24,3 +24,6 @@ env/
 # IDE
 .vscode/
 .idea/
+
+# Conversation transcripts kept local-only (not for public sharing)
+notes/conversation_transcript.md

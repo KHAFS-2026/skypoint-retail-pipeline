@@ -447,10 +447,10 @@ Honest list of things that are deliberately scoped out or known rough edges.
 
 The challenge brief explicitly asks for feedback on the AI coding tool
 (§1, §7). Tool used: **Claude Code (Claude Opus 4.7) inside the VS Code
-extension**. A filtered transcript is in
-[notes/conversation_transcript.md](notes/conversation_transcript.md)
-(produced by [notes/export_transcript.py](notes/export_transcript.py) from
-the JSONL Claude Code auto-saves).
+extension**. The script [notes/export_transcript.py](notes/export_transcript.py)
+turns Claude Code's auto-saved JSONL transcript into a readable markdown
+file; the transcript itself is kept local to the development machine
+and is not committed to this public repo.
 
 ### What worked well
 
