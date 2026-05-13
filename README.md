@@ -440,3 +440,77 @@ Honest list of things that are deliberately scoped out or known rough edges.
    accepted_values warnings expose DQ signals, but there's no dedicated
    monitoring layer. Could be added as additional dbt tests with
    `severity: warn` and a separate `dq_*.sql` model surface.
+
+---
+
+## 10. AI tool usage and feedback
+
+The challenge brief explicitly asks for feedback on the AI coding tool
+(§1, §7). Tool used: **Claude Code (Claude Opus 4.7) inside the VS Code
+extension**. A filtered transcript is in
+[notes/conversation_transcript.md](notes/conversation_transcript.md)
+(produced by [notes/export_transcript.py](notes/export_transcript.py) from
+the JSONL Claude Code auto-saves).
+
+### What worked well
+
+- **Step-by-step orchestration.** Breaking the build into discrete steps
+  (synthetic data → loader → dbt → Power BI docs → README → git → static
+  HTML substitute) kept context clean. Each step was reviewed before the
+  next started — no big-bang generation.
+- **Smoke-test before Docker.** The AI proactively ran each layer in a
+  local Python venv before relying on Docker. That caught two bugs
+  early: `initcap()` doesn't exist in DuckDB (used as a defensive
+  fallback in `stg_customers`/`stg_stores`), and a Plotly `tickformat`
+  applied to the wrong axis (revenue is Y, not X, on the line chart).
+- **Clarifying questions over guessing.** When a request was ambiguous
+  ("fix the issues in the CSVs and run it up the pipeline" — clean
+  source vs. let the staging models handle it), the AI asked rather
+  than picking one. Same for the Power BI Windows-access question and
+  the Parquet-fallback decision.
+- **Proactive scope adjustments.** When time pressure surfaced, the AI
+  suggested the static HTML substitute rather than half-shipping a
+  `.pbix`. The result is a defensible deliverable that still answers
+  all four business questions with real visuals.
+
+### Rough edges hit during this build
+
+- **Homebrew + sudo in a non-interactive shell.** Installing Docker
+  Desktop via `brew install --cask docker-desktop` failed mid-install
+  because the cask's post-install step needs `sudo` to create
+  `/usr/local/cli-plugins/`, and `sudo` can't read a password through
+  the non-interactive bash sandbox. The fix was for me to run the
+  command in my own terminal. Worth a docs note from the AI tool side.
+- **dbt-duckdb 1.8.4 vs. Python 3.11.** The dbt-duckdb 1.8.4 adapter
+  declares macros with `supported_languages=['sql', 'python',
+  'javascript']`. On Python 3.11 the dbt-core `ModelLanguage` enum
+  raises `KeyError: 'javascript'` during macro parsing. On Python 3.9
+  the same combo parses fine. The local smoke test happened to be on
+  Python 3.9, so the bug only surfaced inside Docker — costing one
+  rebuild cycle to diagnose. Eventual fix: pin the dbt image to
+  `python:3.9-slim`. A cleaner long-term fix would be moving to
+  `dbt-duckdb >= 1.9`.
+- **Kaleido deprecation.** PNG export from Plotly uses `kaleido==0.2.1`;
+  later versions need a Chromium install (Playwright). Functional but
+  the deprecation warning is noisy.
+- **System reminders.** The Claude Code CLI repeatedly nudged about
+  `TodoWrite` for what were simple linear tasks (the reminder fires
+  regardless of whether todos would actually help). Minor noise but
+  worth tuning.
+
+### Honest take
+
+Most of the value came from the AI accelerating the *correct* path,
+not from one-shot generation. Almost every artefact went through at
+least one revision based on observed output (the `initcap` bug, the
+axis bug, the Python-version bug, the discount-percent ambiguity in
+`stg_order_items`). The tool was at its best when it ran something,
+read the result, and adjusted — and at its worst when it assumed it
+already knew the right answer and skipped verification. The "smoke-test
+in a venv first" pattern was a deliberate guard against the latter.
+
+The static-HTML substitute (analytics/) was an AI suggestion rather
+than my idea, and it noticeably strengthened the submission story when
+the `.pbix` slipped out of scope — the kind of move that's hard to plan
+in advance but easy to make in collaboration with an AI that
+understands the assessment criteria.
