@@ -97,7 +97,11 @@ are immediately visible to Power BI Desktop without any copy step.
 │   ├── semantic_model.md
 │   ├── dax_measures.md
 │   ├── report_layout.md
-│   └── screenshots/
+│   └── screenshots/          PNGs of the static HTML substitute report
+├── analytics/                static-HTML executive summary (PBI substitute)
+│   ├── report.py
+│   ├── report.html
+│   └── requirements.txt
 ├── warehouse/                produced at runtime (DuckDB file + Parquet)
 ├── docker-compose.yml
 ├── CHALLENGE.md              original brief
@@ -341,18 +345,41 @@ from DuckDB's `range()` table function, avoiding a dependency on
 
 ## 8. Screenshots
 
-The `.pbix` is built outside the Docker stack on a Windows machine — see
-[powerbi/](powerbi/) for the build instructions. Screenshots will be
-committed under [powerbi/screenshots/](powerbi/screenshots/) once the
-report is assembled:
+Power BI Desktop is Windows-only and the assessment was developed on
+macOS. As a time-constrained substitute the same four business questions
+are answered by a static HTML report rendered by
+[analytics/report.py](analytics/report.py) (DuckDB + Plotly). The PNGs
+below are exports from that report.
 
-- `powerbi/screenshots/report_overview.png` — full one-page report
-- `powerbi/screenshots/report_filtered.png` — same report with a country
-  slicer applied (proves cross-filtering interactivity)
+![Overview](powerbi/screenshots/report_overview.png)
 
-> **TODO** — capture and commit the two screenshots above once
-> `retail_sales.pbix` exists. Until then, see [powerbi/report_layout.md](powerbi/report_layout.md)
-> for the intended layout.
+*[report_overview.png](powerbi/screenshots/report_overview.png) — four-quadrant overview: revenue trend, revenue by category, top 10 customers, top 5 products by margin.*
+
+![Filtered](powerbi/screenshots/report_filtered.png)
+
+*[report_filtered.png](powerbi/screenshots/report_filtered.png) — same data filtered to the strongest country (Canada), demonstrating how a slicer would behave in the equivalent Power BI report.*
+
+The full interactive version lives at
+[analytics/report.html](analytics/report.html) — open it in any browser.
+
+To regenerate the report and PNGs (assumes `docker compose up --build`
+has produced `warehouse/retail_data.db`):
+
+```bash
+python3 -m venv .venv
+.venv/bin/pip install -r analytics/requirements.txt
+.venv/bin/python analytics/report.py
+```
+
+> **Why a substitute?** Power BI Desktop doesn't exist on macOS, and a
+> Windows machine wasn't available within the time budget for the
+> challenge. The full Power BI design is specified in [powerbi/](powerbi/)
+> (connection, semantic model, full DAX, layout) and is intended to be
+> assembled in ~30 min on a Windows machine — at which point the `.pbix`
+> would replace this HTML stand-in. The static report uses the same marts
+> and answers the same four business questions, so the analytical content
+> is equivalent; what's missing is the interactive Power BI semantic
+> model and the `.pbix` file itself.
 
 ---
 
@@ -360,11 +387,16 @@ report is assembled:
 
 Honest list of things that are deliberately scoped out or known rough edges.
 
-1. **`.pbix` file not yet committed.** Power BI Desktop is Windows-only and
-   was developed on macOS. All artefacts the assessor needs to assemble the
-   `.pbix` are in [powerbi/](powerbi/) — connection setup, semantic model
-   spec, full DAX, and a one-page layout spec. Estimated build time on a
-   Windows machine with the DuckDB ODBC driver installed: ~30 min.
+1. **`.pbix` file not committed.** Power BI Desktop is Windows-only and
+   was developed on macOS. As a substitute,
+   [analytics/report.py](analytics/report.py) renders the same four
+   business questions as a static HTML report (Plotly), and two PNG
+   exports of that report are committed under
+   [powerbi/screenshots/](powerbi/screenshots/) and embedded in §8. The
+   full Power BI build is specified in [powerbi/](powerbi/) and is
+   intended to be assembled in ~30 min on a Windows machine, at which
+   point the `.pbix` would replace the HTML stand-in. Estimated time on
+   Windows with the DuckDB ODBC driver installed: ~30 min.
 
 2. **dbt image pinned to Python 3.9.** `dbt-duckdb==1.8.4` declares macros
    with `supported_languages=['sql', 'python', 'javascript']`, and
