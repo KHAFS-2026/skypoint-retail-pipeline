@@ -1,0 +1,29 @@
+services:
+  loader:
+    build: ./loader
+    container_name: retail_loader
+    # Read-only mount of the landing zone; read-write mount of the warehouse
+    # directory so the DuckDB file (retail_data.db) is persisted on the host.
+    volumes:
+      - ./landing:/data/landing:ro
+      - ./warehouse:/data/warehouse
+    environment:
+      LANDING_DIR: /data/landing
+      DB_PATH: /data/warehouse/retail_data.db
+
+  dbt:
+    build: ./dbt_project
+    container_name: retail_dbt
+    # Wait for the loader to finish populating the raw schema before running
+    # transformations. DuckDB is a single-writer engine, so this serial
+    # ordering also avoids any concurrent-write conflict on the .db file.
+    depends_on:
+      loader:
+        condition: service_completed_successfully
+    volumes:
+      - ./warehouse:/data/warehouse
+      # Bind-mount the dbt project so model edits don't require a rebuild.
+      - ./dbt_project:/dbt
+    environment:
+      DBT_PROFILES_DIR: /dbt
+      DBT_DUCKDB_PATH: /data/warehouse/retail_data.db

@@ -1,0 +1,26 @@
+# Generated pipeline artifacts — rebuilt by `docker compose up --build`
+warehouse/*
+!warehouse/.gitkeep
+
+# dbt build artifacts, logs, and per-user state
+dbt_project/target/
+dbt_project/logs/
+dbt_project/dbt_packages/
+dbt_project/.user.yml
+dbt_project/package-lock.yml
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
+.venv/
+venv/
+env/
+.smoketest_venv/
+
+# macOS
+.DS_Store
+
+# IDE
+.vscode/
+.idea/

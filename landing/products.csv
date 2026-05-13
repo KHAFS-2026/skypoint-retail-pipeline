@@ -1,0 +1,101 @@
+product_id,name,category,sub_category,unit_cost,unit_price
+1,Plus Footwear Edition 771,Apparel,Footwear,259.13,420.88
+2,Mini Womens Kit 908,Apparel,Womens,105.48,192.98
+3,Plus Fitness Kit 828,Sports,Fitness,215.06,309.03
+4,Ultra Appliances Widget 424,Home & Kitchen,Appliances,230.66,409.0
+5,Classic Womens Model 652,Apparel,Womens,390.24,739.01
+6,Lite Team Sports Widget 856,Sports,Team Sports,219.37,407.95
+7,Plus Haircare Model 446,Beauty,Haircare,276.28,594.31
+8,Eco Fitness Edition 194,Sports,Fitness,131.89,262.54
+9,Ultra Cookware Pack 969,Home & Kitchen,Cookware,179.29,371.67
+10,Classic Skincare Series 251,Beauty,Skincare,286.95,503.86
+11,Max Outdoor Model 859,Sports,Outdoor,397.05,891.29
+12,Plus Fitness Tool 188,Sports,Fitness,59.17,94.33
+13,Ultra Fragrance Widget 519,Beauty,Fragrance,256.24,398.54
+14,Deluxe Appliances Bundle 667,Home & Kitchen,Appliances,197.25,447.69
+15,Pro Cookware Kit 368,Home & Kitchen,Cookware,121.47,246.91
+16,Max Decor Widget 222,Home & Kitchen,Decor,306.36,564.0
+17,Eco Team Sports Gadget 482,Sports,Team Sports,205.99,401.24
+18,Classic Non-fiction Kit 154,Books,Non-fiction,110.52,192.9
+19,Lite Computers Gadget 713,Electronics,Computers,301.55,575.0
+20,Ultra Children Pack 693,Books,Children,141.95,196.86
+21,Max Cookware Kit 615,Home & Kitchen,Cookware,90.0,130.04
+22,Deluxe Skincare Model 178,Beauty,Skincare,48.39,31.78
+23,Lite Makeup Bundle 129,Beauty,Makeup,298.3,403.95
+24,Ultra Appliances Series 807,Home & Kitchen,Appliances,305.68,219.45
+25,Eco Fiction Gadget 359,Books,Fiction,19.23,10.45
+26,Classic Appliances Widget 192,Home & Kitchen,Appliances,59.93,130.05
+27,Smart Non-fiction Tool 169,Books,Non-fiction,41.44,24.77
+28,Ultra Skincare Set 616,Beauty,Skincare,340.82,619.31
+29,Deluxe Footwear Set 626,Apparel,Footwear,92.57,124.66
+30,Smart Kids Widget 184,Apparel,Kids,132.59,179.05
+31,Smart Fitness Series 397,Sports,Fitness,394.02,692.04
+32,Pro Womens Model 788,Apparel,Womens,43.86,77.61
+33,Lite Skincare Gadget 472,Beauty,Skincare,390.13,639.9
+34,Mini Reference Tool 707,Books,Reference,110.64,246.32
+35,Smart Cycling Bundle 250,Sports,Cycling,307.66,412.4
+36,Ultra Audio Model 794,Electronics,Audio,12.65,18.13
+37,Eco TV & Video Set 400,Electronics,TV & Video,265.51,487.83
+38,Ultra TV & Video Series 560,Electronics,TV & Video,127.19,214.85
+39,Eco Womens Series 237,Apparel,Womens,126.36,215.55
+40,Eco Fragrance Pack 974,Beauty,Fragrance,64.21,81.7
+41,Pro Kids Widget 704,Apparel,Kids,19.96,45.67
+42,Ultra Footwear Series 453,Apparel,Footwear,396.79,688.63
+43,Mini Audio Gadget 445,Electronics,Audio,69.57,132.18
+44,Pro Team Sports Model 702,Sports,Team Sports,10.85,17.48
+45,Classic Non-fiction Model 614,Books,Non-fiction,324.96,671.89
+46,Smart Fiction Set 394,Books,Fiction,107.53,170.6
+47,Plus Fiction Edition 379,Books,Fiction,28.77,64.49
+48,Deluxe Kids Pack 420,Apparel,Kids,81.63,140.65
+49,Plus Computers Model 318,Electronics,Computers,265.0,601.84
+50,Smart Outdoor Set 473,Sports,Outdoor,186.07,281.43
+51,Deluxe Computers Bundle 943,Electronics,Computers,116.24,163.75
+52,Mini Computers Model 597,Electronics,Computers,224.81,397.23
+53,Smart Kids Kit 759,Apparel,Kids,341.3,837.18
+54,Ultra Makeup Series 472,Beauty,Makeup,269.33,633.31
+55,Smart Skincare Tool 893,Beauty,Skincare,372.76,569.34
+56,Max Footwear Series 323,Apparel,Footwear,59.42,84.83
+57,Ultra Team Sports Edition 658,Sports,Team Sports,170.66,356.26
+58,Mini Children Widget 760,Books,Children,386.79,768.77
+59,Mini Non-fiction Pack 493,Books,Non-fiction,125.09,305.97
+60,Pro Cycling Series 361,Sports,Cycling,121.75,294.3
+61,Deluxe Team Sports Widget 380,Sports,Team Sports,346.84,787.38
+62,Ultra Reference Kit 815,Books,Reference,105.87,136.18
+63,Pro Fiction Kit 745,Books,Fiction,178.48,105.31
+64,Plus Appliances Series 911,Home & Kitchen,Appliances,375.89,671.69
+65,Max Kids Gadget 524,Apparel,Kids,148.3,253.82
+66,Ultra Computers Model 303,Electronics,Computers,106.19,245.02
+67,Plus Womens Gadget 114,Apparel,Womens,288.0,508.52
+68,Max Non-fiction Bundle 394,Books,Non-fiction,299.08,507.45
+69,Deluxe Non-fiction Kit 518,Books,Non-fiction,317.4,392.75
+70,Ultra Fragrance Widget 580,Beauty,Fragrance,55.02,89.14
+71,Ultra Children Gadget 670,Books,Children,25.38,41.44
+72,Pro Skincare Bundle 616,Beauty,Skincare,248.62,396.12
+73,Mini Haircare Kit 615,Beauty,Haircare,198.15,325.15
+74,Classic Mens Widget 230,Apparel,Mens,200.69,494.78
+75,Smart Kids Edition 546,Apparel,Kids,357.28,575.29
+76,Pro Reference Set 252,Books,Reference,23.72,34.11
+77,Eco Outdoor Edition 826,Sports,Outdoor,225.22,404.29
+78,Lite Furniture Kit 867,Home & Kitchen,Furniture,204.48,317.89
+79,Deluxe Haircare Gadget 352,Beauty,Haircare,307.76,640.13
+80,Plus Team Sports Gadget 957,Sports,Team Sports,130.77,161.83
+81,Classic Mens Widget 771,Apparel,Mens,249.7,446.72
+82,Pro Appliances Bundle 430,Home & Kitchen,Appliances,319.66,692.68
+83,Ultra Decor Widget 972,Home & Kitchen,Decor,84.87,144.71
+84,Deluxe Footwear Bundle 801,Apparel,Footwear,242.2,403.69
+85,Mini Cycling Tool 714,Sports,Cycling,170.38,372.01
+86,Eco Mobile Set 763,Electronics,Mobile,275.12,385.61
+87,Eco Outdoor Bundle 252,Sports,Outdoor,393.71,822.7
+88,Pro Skincare Pack 210,Beauty,Skincare,205.24,356.49
+89,Smart Skincare Widget 216,Beauty,Skincare,296.73,534.63
+90,Classic Children Tool 841,Books,Children,183.09,379.24
+91,Lite Appliances Gadget 864,,Appliances,392.91,603.95
+92,Eco Computers Model 808,Electronics,Computers,163.23,335.44
+93,Deluxe Makeup Bundle 189,Beauty,Makeup,51.79,63.08
+94,Lite Decor Set 546,Home & Kitchen,Decor,337.15,780.72
+95,Ultra Outdoor Kit 256,Sports,Outdoor,296.03,526.59
+96,Pro Footwear Edition 108,Apparel,Footwear,42.86,98.66
+97,Pro Children Model 509,Books,Children,195.47,384.75
+98,Smart Fiction Widget 532,Books,Fiction,231.41,444.13
+99,Eco Makeup Series 121,Beauty,Makeup,66.21,141.96
+100,Plus Children Model 234,Books,Children,353.5,756.45

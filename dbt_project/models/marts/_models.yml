@@ -1,0 +1,61 @@
+version: 2
+
+models:
+  - name: dim_customer
+    description: One row per cleaned customer.
+    columns:
+      - name: customer_id
+        tests: [unique, not_null]
+
+  - name: dim_product
+    description: One row per cleaned product, with margin_pct and a margin-issue flag.
+    columns:
+      - name: product_id
+        tests: [unique, not_null]
+
+  - name: dim_store
+    description: One row per cleaned store.
+    columns:
+      - name: store_id
+        tests: [unique, not_null]
+
+  - name: dim_date
+    description: Calendar dimension covering 2020-01-01 through 2030-12-31.
+    columns:
+      - name: date_key
+        tests: [unique, not_null]
+      - name: date
+        tests: [unique, not_null]
+
+  - name: fct_sales
+    description: >
+      Sales fact at the order-line grain (one row per order_id × product_id).
+      Orphan-FK rows and orders with bad/future dates are dropped via inner
+      joins to the dimensions and the staging filters upstream.
+    columns:
+      - name: sales_key
+        tests: [unique, not_null]
+      - name: customer_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_customer')
+              field: customer_id
+      - name: product_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_product')
+              field: product_id
+      - name: store_id
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_store')
+              field: store_id
+      - name: date_key
+        tests:
+          - not_null
+          - relationships:
+              to: ref('dim_date')
+              field: date_key

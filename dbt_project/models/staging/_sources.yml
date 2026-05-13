@@ -1,0 +1,15 @@
+version: 2
+
+sources:
+  - name: raw
+    description: >
+      Raw CSV data landed by the Python loader. All columns are loaded as
+      VARCHAR so the raw layer faithfully preserves the source — staging
+      models below own the casting and cleaning.
+    schema: raw
+    tables:
+      - name: customers
+      - name: products
+      - name: stores
+      - name: orders
+      - name: order_items

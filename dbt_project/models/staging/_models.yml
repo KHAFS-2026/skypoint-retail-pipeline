@@ -1,0 +1,56 @@
+version: 2
+
+models:
+  - name: stg_customers
+    description: Cleaned customers — deduped, country normalized, dates parsed.
+    columns:
+      - name: customer_id
+        tests: [unique, not_null]
+      - name: email
+        description: Lowercased, NULL when missing or malformed.
+
+  - name: stg_products
+    description: Cleaned products with a margin-issue flag for downstream review.
+    columns:
+      - name: product_id
+        tests: [unique, not_null]
+      - name: category
+        tests: [not_null]
+
+  - name: stg_stores
+    description: Cleaned stores with country normalized.
+    columns:
+      - name: store_id
+        tests: [unique, not_null]
+
+  - name: stg_orders
+    description: >
+      Cleaned orders. Drops year-2099 typos and unparseable dates; statuses
+      normalized to lowercase canonical values; deduped on order_id.
+    columns:
+      - name: order_id
+        tests: [unique, not_null]
+      - name: order_date
+        tests: [not_null]
+      - name: status
+        tests:
+          - accepted_values:
+              values: ['completed', 'pending', 'cancelled', 'shipped', 'returned']
+              config:
+                severity: warn
+
+  - name: stg_order_items
+    description: >
+      Cleaned order line items. Drops zero/negative quantities, normalizes
+      discount_pct unit (decimal vs percent), filters out absurd discounts,
+      and dedupes on (order_id, product_id).
+    columns:
+      - name: order_id
+        tests: [not_null]
+      - name: product_id
+        tests: [not_null]
+      - name: quantity
+        tests: [not_null]
+      - name: discount_pct
+        tests:
+          - not_null
