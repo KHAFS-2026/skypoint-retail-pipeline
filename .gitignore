@@ -25,5 +25,5 @@ env/
 .vscode/
 .idea/
 
-# Conversation transcripts kept local-only (not for public sharing)
-notes/conversation_transcript.md
+# Local-only notes (conversation transcripts and helper scripts)
+notes/
